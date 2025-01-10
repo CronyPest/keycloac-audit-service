@@ -5,19 +5,19 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.Instant;
 import java.util.UUID;
 
-@Data
 @Entity
+@Getter
+@Setter
 @Table(name = "audit")
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(of = "id")
 public class Audit {
 
     @Id
@@ -25,5 +25,6 @@ public class Audit {
     private UUID id;
     private String username;
     private String action;
+    private String actionResult;
     private Instant actionDate;
 }

@@ -16,6 +16,9 @@
             <column name="action" type="varchar" remarks="Действие">
                 <constraints nullable="false"/>
             </column>
+            <column name="action_result" type="varchar" remarks="Результат действия">
+                <constraints nullable="false"/>
+            </column>
             <column name="action_date" type="timestamp" remarks="Дата/время действия">
                 <constraints nullable="false"/>
             </column>

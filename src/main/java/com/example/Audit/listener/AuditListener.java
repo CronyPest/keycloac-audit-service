@@ -17,7 +17,7 @@ public class AuditListener {
     @KafkaListener(topics = "${app.topic}", concurrency = "1")
     public void receiveMessage(ActionRecord message) {
 
-        log.info("Старт получения сообщения из топика аудита: {}", message);
+        log.debug("Receiving message from audit topic: {}", message);
         service.createAudit(message);
     }
 }
