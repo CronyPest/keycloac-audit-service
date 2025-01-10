@@ -1,0 +1,23 @@
+{
+    "type": "record",
+    "name": "ActionRecord",
+    "namespace": "com.example.avro",
+    "fields": [
+        {
+            "name": "username",
+            "type": "string"
+        },
+        {
+            "name": "action",
+            "type": "string"
+        },
+        {
+            "name": "actionResult",
+            "type": "string"
+        },
+        {
+            "name": "actionDate",
+            "type": "string"
+        }
+    ]
+}
