@@ -1,0 +1,147 @@
+openapi: 3.0.0
+info:
+  title: Audit Service
+  version: 1.0.0
+paths:
+  /audit:
+    get:
+      summary: Get audit records
+      operationId: getMyAuditRecords
+      parameters:
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: integer
+            format: int32
+            minimum: 0
+            default: 0
+        - name: size
+          in: query
+          required: false
+          schema:
+            type: integer
+            format: int32
+            minimum: 1
+            default: 10
+        - name: sortBy
+          in: query
+          required: false
+          schema:
+            type: string
+            default: actionDate
+          description: Field to sort by
+        - name: sortOrder
+          in: query
+          required: false
+          schema:
+            type: string
+            enum: [ asc, desc ]
+            default: desc
+          description: Sort order
+      responses:
+        '200':
+          description: A list of audit records
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '../schemas/audit.yaml#/components/schemas/AuditDto'
+
+  /audit/all:
+    get:
+      summary: Get all audit records
+      operationId: getAllAuditRecords
+      parameters:
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: integer
+            format: int32
+            minimum: 0
+            default: 0
+        - name: size
+          in: query
+          required: false
+          schema:
+            type: integer
+            format: int32
+            minimum: 1
+            default: 10
+        - name: sortBy
+          in: query
+          required: false
+          schema:
+            type: string
+            default: actionDate
+          description: Field to sort by
+        - name: sortOrder
+          in: query
+          required: false
+          schema:
+            type: string
+            enum: [ asc, desc ]
+            default: desc
+          description: Sort order
+      responses:
+        '200':
+          description: A list of all audit records
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '../schemas/audit.yaml#/components/schemas/AuditDto'
+
+  /audit/{username}:
+    get:
+      summary: Get audit records by username
+      operationId: getAuditRecordsByUsername
+      parameters:
+        - name: username
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: integer
+            format: int32
+            minimum: 0
+            default: 0
+        - name: size
+          in: query
+          required: false
+          schema:
+            type: integer
+            format: int32
+            minimum: 1
+            default: 10
+        - name: sortBy
+          in: query
+          required: false
+          schema:
+            type: string
+            default: actionDate
+          description: Field to sort by
+        - name: sortOrder
+          in: query
+          required: false
+          schema:
+            type: string
+            enum: [ asc, desc ]
+            default: desc
+          description: Sort order
+      responses:
+        '200':
+          description: A list of audit records for specified user
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '../schemas/audit.yaml#/components/schemas/AuditDto'

@@ -1,0 +1,19 @@
+components:
+  schemas:
+    AuditDto:
+      type: object
+      required:
+        - username
+        - action
+        - actionResult
+        - actionDate
+      properties:
+        username:
+          type: string
+        action:
+          type: string
+        actionResult:
+          type: string
+        actionDate:
+          type: string
+          format: date-time
