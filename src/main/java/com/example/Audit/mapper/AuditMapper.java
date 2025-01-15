@@ -8,6 +8,9 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
 import org.mapstruct.ReportingPolicy;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 
 import java.time.Instant;
 import java.time.OffsetDateTime;
@@ -52,4 +55,9 @@ public interface AuditMapper {
     AuditDto toDto(Audit audit);
 
     List<AuditDto> toListDto(List<Audit> audits);
+
+    default Pageable getPageable(Integer page, Integer size, String sortBy, String sortOrder) {
+        Sort.Direction direction = Sort.Direction.fromString(sortOrder);
+        return PageRequest.of(page, size, Sort.by(direction, sortBy));
+    }
 }
