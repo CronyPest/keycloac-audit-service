@@ -6,6 +6,28 @@ server:
 spring:
   application:
     name: AuditService
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            client-id: ylab-service
+            client-secret: dmSxwDwyA0amZPNUcg2uwR4KE9EwOhxi
+            scope:
+              - openid
+              - profile
+              - email
+            authorization-grant-type: authorization_code
+            redirect-uri: http://localhost:8080/api/auth/user
+        provider:
+          keycloak:
+            authorization-uri: http://localhost:8069/realms/ylab-test/protocol/openid-connect/auth
+            token-uri: http://localhost:8069/realms/ylab-test/protocol/openid-connect/token
+            user-info-uri: http://localhost:8069/realms/ylab-test/protocol/openid-connect/userinfo
+            user-name-attribute: preferred_username
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:8069/realms/ylab-test/protocol/openid-connect/certs
   datasource:
     url: ${SPRING_DATASOURCE_URL}
     username: ${SPRING_DATASOURCE_USERNAME}
